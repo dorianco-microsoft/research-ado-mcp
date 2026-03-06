@@ -121,7 +121,7 @@ Restart your Copilot CLI session (or run `/mcp` to check status). You should see
 Once the context is clear, try a search:
 
 ```
-Find all usages of `SomeClass` in the ADO repository
+Find all usages of `SomeClass`
 ```
 
 ## Refreshing Authentication
