@@ -107,16 +107,21 @@ Alternatively, manually edit `~/.copilot/mcp-config.json`:
 
 Restart your Copilot CLI session (or run `/mcp` to check status). You should see `research-ado` listed with status `✓ Connected`.
 
-> **Important:** you should instruct the agent to use the MCP instead of local search
-
-```
-This project is too large to search locally. Use the `research-ado` MCP tools to perform code search operations instead of local search tools like `grep` or `glob`.
-```
+> [!IMPORTANT]
+> **The agent won't use the MCP tools automatically.** You must explicitly instruct it to prefer MCP-based search over local tools. Add the following instruction at the start of your session (or in your custom instructions / `COPILOT.md`):
+>
+> ```
+> This project is too large to search locally. Always use the `research-ado` MCP tools
+> (ado_search_code, ado_get_file_content, etc.) to perform code search and file retrieval
+> instead of local search tools like grep or glob.
+> ```
+>
+> Without this, the agent will default to local search tools which cannot reach Azure DevOps repositories.
 
 Once the context is clear, try a search:
 
 ```
-Find all usages of `SomeClass`
+Find all usages of `SomeClass` in the ADO repository
 ```
 
 ## Refreshing Authentication

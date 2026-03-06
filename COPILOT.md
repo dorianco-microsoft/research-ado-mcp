@@ -33,20 +33,22 @@ src/
 ## Tech Stack
 
 - **Language:** TypeScript (strict mode, ES2022 target, Node16 module resolution)
-- **Runtime:** Node.js ≥ 18
+- **Runtime:** Node.js ≥ 18, run via `tsx` (no compile step — TypeScript is executed directly)
 - **Key dependencies:**
   - `@modelcontextprotocol/sdk` — MCP server framework
   - `@azure/identity` — Azure authentication (AzureCliCredential)
   - `zod` — Input schema validation for tool parameters
+  - `tsx` — TypeScript runtime (dev dependency, used by `npm start` and `npm run dev`)
 
 ## Build & Run
 
 ```bash
 npm install        # install dependencies
-npm run build      # compile TypeScript → dist/
-npm start          # run the MCP server (stdio mode)
-npm run dev        # watch mode for development
+npm start          # run the MCP server (stdio mode) — executes src/index.ts via tsx
+npm run dev        # watch mode for development (tsx --watch)
 ```
+
+> **Note:** There is no build/compile step. The project runs TypeScript source directly using `tsx`. The `tsconfig.json` is used for IDE support and type checking only.
 
 ## Development Guidelines
 
